@@ -5,7 +5,7 @@
 ;; Author: Sébastien Gross <seb•ɑƬ•chezwam•ɖɵʈ•org>
 ;; Keywords: emacs, 
 ;; Created: 2012-07-18
-;; Last changed: 2012-08-31 18:29:59
+;; Last changed: 2012-08-31 18:31:11
 ;; Licence: WTFPL, grab your copy here: http://sam.zoy.org/wtfpl/
 
 ;; This file is NOT part of GNU Emacs.
@@ -41,6 +41,7 @@
                      (point-min) (point-max)) "\n")
           collect (split-string l (char-to-string 0)))))
 
+;;;###autoload
 (defun magit-view-file-history ()
   "Show history of current file."
   (interactive)
