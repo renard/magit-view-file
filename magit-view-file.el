@@ -5,7 +5,7 @@
 ;; Author: Sébastien Gross <seb•ɑƬ•chezwam•ɖɵʈ•org>
 ;; Keywords: emacs, 
 ;; Created: 2012-07-18
-;; Last changed: 2012-08-31 18:31:11
+;; Last changed: 2012-10-02 23:36:43
 ;; Licence: WTFPL, grab your copy here: http://sam.zoy.org/wtfpl/
 
 ;; This file is NOT part of GNU Emacs.
@@ -46,8 +46,8 @@
   "Show history of current file."
   (interactive)
   (let* ((file-name (buffer-file-name))
-         (file (file-name-nondirectory file-name))
-         (lines (magit-view-file-parse-log file))
+         (file (magit-filename file-name))
+         (lines (magit-view-file-parse-log (file-name-nondirectory file)))
          (blank " "))
     (with-current-buffer
         (get-buffer-create (format "HISTORY:%s" file-name))
