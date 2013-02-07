@@ -5,7 +5,7 @@
 ;; Author: Sébastien Gross <seb•ɑƬ•chezwam•ɖɵʈ•org>
 ;; Keywords: emacs, 
 ;; Created: 2012-07-18
-;; Last changed: 2013-02-07 15:24:52
+;; Last changed: 2013-02-07 15:27:17
 ;; Licence: WTFPL, grab your copy here: http://sam.zoy.org/wtfpl/
 
 ;; This file is NOT part of GNU Emacs.
@@ -80,7 +80,7 @@ file history buffer."
                  (overlay-put ov :file file)
                  (overlay-put ov :file-name file-name)
                  ))
-      (delete-backward-char 1)
+      (delete-char -1 nil)
       (setq buffer-read-only t)
       (magit-view-file-log-mode 1)
       (goto-char (point-min))
