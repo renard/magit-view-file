@@ -5,7 +5,7 @@
 ;; Author: Sébastien Gross <seb•ɑƬ•chezwam•ɖɵʈ•org>
 ;; Keywords: emacs, 
 ;; Created: 2012-07-18
-;; Last changed: 2012-10-02 23:36:43
+;; Last changed: 2013-02-07 15:24:52
 ;; Licence: WTFPL, grab your copy here: http://sam.zoy.org/wtfpl/
 
 ;; This file is NOT part of GNU Emacs.
@@ -32,7 +32,8 @@
 
 
 (defun magit-view-file-parse-log(file)
-  ""
+  "Get log for FILE. Return a list suitable to be displayed in
+file history buffer."
   (with-temp-buffer
     (magit-git-insert
      (list "log" "--pretty=format:%H%x00%at%x00%an%x00%s" file))
@@ -88,7 +89,8 @@
                           
 
 (defun magit-view-file-get-properties ()
-  ""
+  "Get overlay properties for file at point in file history
+buffer."
   (save-excursion
     (goto-char (point-at-bol))
     (loop for ov in (overlays-at (point))
@@ -98,14 +100,14 @@
 
 
 (defun magit-view-file-show-commit ()
-  ""
+  "Show commit at point in file history mode."
   (interactive)
   (let* ((values (magit-view-file-get-properties))
          (sha1 (plist-get values :sha1)))
     (magit-show-commit sha1)))
 
 (defun magit-view-file-at-commit ()
-  "View FILE at COMMIT."
+  "View FILE at COMMIT in file history buffer."
   (interactive)
   (save-excursion
     (goto-char (point-at-bol))
