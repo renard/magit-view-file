@@ -115,6 +115,9 @@ buffer."
            (mode (with-current-buffer
                      (find-buffer-visiting (plist-get values :file-name))
                    major-mode))
+           (point (with-current-buffer
+                     (find-buffer-visiting (plist-get values :file-name))
+                   (point)))
            (default-directory (file-name-directory (plist-get values :file-name)))
            (new-buffer-name (format "%s:%s"
                                      (substring (plist-get values :sha1) 0 magit-sha1-abbrev-length)
@@ -125,6 +128,7 @@ buffer."
         (magit-git-insert "show" new-buffer-name)
         (set-buffer-modified-p nil)
         (funcall mode)
+	(goto-char point)
         (view-buffer-other-window (current-buffer) nil 'kill-buffer)))))
 
 
