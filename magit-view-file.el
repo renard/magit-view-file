@@ -5,7 +5,7 @@
 ;; Author: Sébastien Gross <seb•ɑƬ•chezwam•ɖɵʈ•org>
 ;; Keywords: emacs, 
 ;; Created: 2012-07-18
-;; Last changed: 2013-02-07 15:27:17
+;; Last changed: 2014-03-26 09:00:26
 ;; Licence: WTFPL, grab your copy here: http://sam.zoy.org/wtfpl/
 
 ;; This file is NOT part of GNU Emacs.
@@ -36,7 +36,7 @@
 file history buffer."
   (with-temp-buffer
     (magit-git-insert
-     (list "log" "--pretty=format:%H%x00%at%x00%an%x00%s" file))
+     "log" "--pretty=format:%H%x00%at%x00%an%x00%s" file)
     (loop for l in (split-string
                     (buffer-substring-no-properties
                      (point-min) (point-max)) "\n")
@@ -47,7 +47,7 @@ file history buffer."
   "Show history of current file."
   (interactive)
   (let* ((file-name (buffer-file-name))
-         (file (magit-filename file-name))
+         (file (magit-buffer-file-name t))
          (lines (magit-view-file-parse-log (file-name-nondirectory file)))
          (blank " "))
     (with-current-buffer
@@ -122,7 +122,7 @@ buffer."
       
       (with-current-buffer (generate-new-buffer new-buffer-name)
         (setq buffer-read-only nil)
-        (magit-git-insert (list "show" new-buffer-name))
+        (magit-git-insert "show" new-buffer-name)
         (set-buffer-modified-p nil)
         (funcall mode)
         (view-buffer-other-window (current-buffer) nil 'kill-buffer)))))
