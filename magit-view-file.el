@@ -3,7 +3,7 @@
 ;; Copyright © 2012 Sébastien Gross <seb•ɑƬ•chezwam•ɖɵʈ•org>
 
 ;; Author: Sébastien Gross <seb•ɑƬ•chezwam•ɖɵʈ•org>
-;; Keywords: emacs, 
+;; Keywords: emacs,
 ;; Created: 2012-07-18
 ;; Last changed: 2014-03-26 09:00:26
 ;; Licence: WTFPL, grab your copy here: http://sam.zoy.org/wtfpl/
@@ -11,7 +11,7 @@
 ;; This file is NOT part of GNU Emacs.
 
 ;;; Commentary:
-;; 
+;;
 
 
 ;;; Code:
@@ -62,7 +62,7 @@ file history buffer."
             for author = (nth 2 l)
             for subject = (nth 3 l)
             do (let ((log (concat
-                           (propertize (substring sha1 0 magit-sha1-abbrev-length)
+                           (propertize (substring sha1 0 (magit-abbrev-length))
                                        'face 'magit-log-sha1)
                            blank
                            (propertize date
@@ -86,7 +86,7 @@ file history buffer."
       (goto-char (point-min))
       (switch-to-buffer-other-window (current-buffer)))))
 
-                          
+
 
 (defun magit-view-file-get-properties ()
   "Get overlay properties for file at point in file history
@@ -122,7 +122,7 @@ buffer."
            (new-buffer-name (format "%s:%s"
                                      (substring (plist-get values :sha1) 0 magit-sha1-abbrev-length)
                                     (plist-get values :file))))
-      
+
       (with-current-buffer (generate-new-buffer new-buffer-name)
         (setq buffer-read-only nil)
         (magit-git-insert "show" new-buffer-name)
@@ -144,10 +144,10 @@ buffer."
     (set-buffer-modified-p nil)
     (kill-buffer)))
 
-                                  
-    
-         
-    
-    
+
+
+
+
+
 
 ;; magit-view-file.el ends here
