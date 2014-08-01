@@ -62,7 +62,7 @@ file history buffer."
             for author = (nth 2 l)
             for subject = (nth 3 l)
             do (let ((log (concat
-                           (propertize (substring sha1 0 magit-sha1-abbrev-length)
+                           (propertize (substring sha1 0 (magit-abbrev-length))
                                        'face 'magit-log-sha1)
                            blank
                            (propertize date
