@@ -5,7 +5,7 @@
 ;; Author: Sébastien Gross <seb•ɑƬ•chezwam•ɖɵʈ•org>
 ;; Keywords: emacs, 
 ;; Created: 2012-07-18
-;; Last changed: 2014-03-26 09:00:26
+;; Last changed: 2014-08-01 21:31:12
 ;; Licence: WTFPL, grab your copy here: http://sam.zoy.org/wtfpl/
 
 ;; This file is NOT part of GNU Emacs.
@@ -120,7 +120,7 @@ buffer."
                    (point)))
            (default-directory (file-name-directory (plist-get values :file-name)))
            (new-buffer-name (format "%s:%s"
-                                     (substring (plist-get values :sha1) 0 magit-sha1-abbrev-length)
+                                     (substring (plist-get values :sha1) 0 (magit-abbrev-length))
                                     (plist-get values :file))))
       
       (with-current-buffer (generate-new-buffer new-buffer-name)
