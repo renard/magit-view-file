@@ -5,7 +5,7 @@
 ;; Author: Sébastien Gross <seb•ɑƬ•chezwam•ɖɵʈ•org>
 ;; Keywords: emacs, 
 ;; Created: 2012-07-18
-;; Last changed: 2015-11-05 17:19:52
+;; Last changed: 2015-11-05 17:36:44
 ;; Licence: WTFPL, grab your copy here: http://sam.zoy.org/wtfpl/
 
 ;; This file is NOT part of GNU Emacs.
@@ -18,8 +18,6 @@
 
 
 (require 'magit)
-(provide 'magit-view-file)
-
 
 (defvar magit-view-file-log-map
   (let ((map (make-sparse-keymap "Magit:VFLog")))
@@ -144,10 +142,6 @@ buffer."
     (set-buffer-modified-p nil)
     (kill-buffer)))
 
-                                  
-    
-         
-    
-    
+(provide 'magit-view-file)
 
 ;; magit-view-file.el ends here
