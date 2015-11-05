@@ -5,7 +5,7 @@
 ;; Author: Sébastien Gross <seb•ɑƬ•chezwam•ɖɵʈ•org>
 ;; Keywords: emacs, 
 ;; Created: 2012-07-18
-;; Last changed: 2014-08-01 21:31:12
+;; Last changed: 2015-11-05 17:19:52
 ;; Licence: WTFPL, grab your copy here: http://sam.zoy.org/wtfpl/
 
 ;; This file is NOT part of GNU Emacs.
@@ -47,7 +47,7 @@ file history buffer."
   "Show history of current file."
   (interactive)
   (let* ((file-name (buffer-file-name))
-         (file (magit-buffer-file-name t))
+         (file (magit-file-relative-name nil t))
          (lines (magit-view-file-parse-log (file-name-nondirectory file)))
          (blank " "))
     (with-current-buffer
@@ -63,13 +63,13 @@ file history buffer."
             for subject = (nth 3 l)
             do (let ((log (concat
                            (propertize (substring sha1 0 (magit-abbrev-length))
-                                       'face 'magit-log-sha1)
+                                       'face 'magit-hash)
                            blank
                            (propertize date
-                                       'face 'magit-log-message)
+                                       'face 'magit-log-date)
                            blank
                            (propertize (format "%-20s" author)
-                                       'face 'magit-branch)
+                                       'face 'magit-log-author)
                            blank
                            (propertize subject)))
                      (pos (point))
